@@ -28,7 +28,21 @@
 		]]>
 	</select>
 	
+	<select id="getVoMap" resultType="map">
+		<![CDATA[
+			select password
+			from guestbook 
+			where no = #{num}
+		]]>
+	</select>
+	
 	<insert id="insert" parameterType="GuestBookVo">
+		<![CDATA[
+			insert into guestbook values(seq_no.nextval, #{name}, #{password}, #{content}, SYSDATE)
+		]]>
+	</insert>
+	
+	<insert id="insertMap" parameterType="map">
 		<![CDATA[
 			insert into guestbook values(seq_no.nextval, #{name}, #{password}, #{content}, SYSDATE)
 		]]>

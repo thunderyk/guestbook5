@@ -35,9 +35,7 @@ public class GuestBookControlloer {
 					  @RequestParam("password") String password,
 					  @RequestParam("content") String content) {
 		
-		GuestBookVo guestBookVo = new GuestBookVo(name,password,content);
-		
-		guestbookDao.guestInsert(guestBookVo);
+		guestbookDao.guestInsertMap(name,password,content);
 		
 		return "redirect:./addList";
 	} //add 방법 1
@@ -60,7 +58,6 @@ public class GuestBookControlloer {
 	public String delete(@RequestParam("password") String password,
 			 			 @RequestParam("no") int no,
 			 			 Model model) {
-		
 		
 		GuestBookVo guestBookVo = guestbookDao.getGuestBook(no);
 		
