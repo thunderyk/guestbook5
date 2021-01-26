@@ -30,7 +30,7 @@ public class GuestBookControlloer {
 		return "addList";
 	}
 	
-	@RequestMapping(value = "/add", method= {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/add2", method= {RequestMethod.GET,RequestMethod.POST})
 	public String add(@RequestParam("name") String name,
 					  @RequestParam("password") String password,
 					  @RequestParam("content") String content) {
@@ -40,7 +40,7 @@ public class GuestBookControlloer {
 		return "redirect:./addList";
 	} //add 방법 1
 	
-	@RequestMapping(value = "/add2", method= {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/add", method= {RequestMethod.GET,RequestMethod.POST})
 	public String add2(@ModelAttribute GuestBookVo guestBookVo) {
 		
 		guestbookDao.guestInsert(guestBookVo);
