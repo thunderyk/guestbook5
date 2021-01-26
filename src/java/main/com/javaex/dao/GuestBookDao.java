@@ -33,11 +33,13 @@ public class GuestBookDao {
 		
 		return sql.selectList("guestbook.getAllList");
 	}
-	public GuestBookVo getGuestBook(int num) {
-		return sql.selectOne("guestbook.getVo",num);
-	}
 	
-	public void deleteGuestBook(int num) {
-		sql.delete("guestbook.delete", num);
+	public int deleteGuestBook(int num, String password) {
+		Map<String,Object> deleteVo = new HashMap<String,Object>();
+		deleteVo.put("no", num);
+		deleteVo.put("password",password);
+		
+		int count = sql.delete("guestbook.delete", deleteVo);
+		return count;
 	}
 }

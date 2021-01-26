@@ -59,11 +59,10 @@ public class GuestBookControlloer {
 			 			 @RequestParam("no") int no,
 			 			 Model model) {
 		
-		GuestBookVo guestBookVo = guestbookDao.getGuestBook(no);
+		int count = guestbookDao.deleteGuestBook(no,password);
 		
-		if(password.equals(guestBookVo.getPassword())) {
+		if(count == 1) {
 			//비밀번호가 맞으면 삭제
-			guestbookDao.deleteGuestBook(no);
 			return "redirect:./addList";
 		}else {
 			//비밀번호가 틀리면 alert페이지로 포워드
